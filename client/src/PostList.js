@@ -7,7 +7,9 @@ export default function PostList() {
     const [posts, setPosts] = useState({})
 
     async function fetchPosts() {
-        const res = await axios.get('http://localhost:4002/posts');
+        const res = await axios.get('http://localhost:4002/posts').catch((err) => {
+            console.log(err.message);
+        });
 
         setPosts(res.data);
     }
